@@ -1274,6 +1274,9 @@ pulsectl==20.2.4
 # homeassistant.components.androidtv
 pure-python-adb[async]==0.3.0.dev0
 
+# homeassistant.components.purpleair
+purpleair==1.2.5
+
 # homeassistant.components.pushbullet
 pushbullet.py==0.11.0
 
@@ -1854,6 +1857,9 @@ pytfiac==0.4
 
 # homeassistant.components.thinkingcleaner
 pythinkingcleaner==0.0.3
+
+# homeassistant.components.purpleair
+python-aqi==0.6.1
 
 # homeassistant.components.blockchain
 python-blockchain-api==0.0.2
