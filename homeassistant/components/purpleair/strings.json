@@ -3,10 +3,8 @@
   "config": {
     "step": {
       "user": {
-        "title": "Enter Purple Air sensor ID",
-        "data": {
-          "sensorid": "Sensor ID"
-        }
+        "title": "Configure Purple Air",
+        "description": "Enter Purple Air sensor ID"
       }
     },
     "error": {
@@ -14,7 +12,7 @@
       "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]"
     },
     "abort": {
-      "already_configured": "[%key:common::config_flow::abort::already_configured_device%]"
+      "already_configured": "Sensor already configured"
     }
   }
 }

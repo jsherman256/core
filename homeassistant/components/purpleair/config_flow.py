@@ -40,16 +40,6 @@ async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> dict[str,
     except requests.exceptions.RequestException:
         raise CannotConnect
 
-    # try:
-    #    sensor = Sensor(data["sensorid"])
-    # except ValueError:
-    #    raise InvalidAuth
-
-    # If you cannot connect:
-    # throw CannotConnect
-    # If the authentication is wrong:
-    # InvalidAuth
-
     # Return info that you want to store in the config entry.
     return {"title": sensor.data[0]["Label"]}
 
@@ -70,6 +60,8 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         errors = {}
 
+        await self.async_set_unique_id(user_input["sensorid"])
+        self._abort_if_unique_id_configured()
         try:
             info = await validate_input(self.hass, user_input)
         except CannotConnect:

@@ -1,0 +1,55 @@
+"""Support for PurpleAir air quality sensors."""
+from __future__ import annotations
+
+from purpleair.sensor import Sensor
+
+from homeassistant.components.sensor import SensorEntity, SensorEntityDescription
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import (
+    ATTR_LATITUDE,
+    ATTR_LONGITUDE,
+    ATTR_STATE,
+    CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+    CONCENTRATION_PARTS_PER_BILLION,
+    CONCENTRATION_PARTS_PER_MILLION,
+    CONF_LATITUDE,
+    CONF_LONGITUDE,
+    CONF_SHOW_ON_MAP,
+    CONF_STATE,
+    PERCENTAGE,
+    TEMP_CELSIUS,
+)
+from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers.entity import DeviceInfo
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
+
+from .const import DOMAIN
+
+
+async def async_setup_entry(
+    hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
+) -> None:
+    """Set up PurpleAir sensor based on a config entry."""
+    sensor = await hass.async_add_executor_job(Sensor, entry.data["sensorid"])
+    async_add_entities([sensor], True)
+
+
+class PurpleAirSensorEntity(SensorEntity):
+    """Define an AirVisual sensor related to a Node/Pro unit."""
+
+    def __init__(
+        self,
+        entry: ConfigEntry,
+        description: SensorEntityDescription,
+    ) -> None:
+        """Initialize."""
+        #super().__init__(coordinator, entry, description)
+
+        self._attr_name = "attr_name"
+        self._attr_unique_id = "attr_unique_id"
+
+    @callback
+    def update_from_latest_data(self) -> None:
+        """Update the entity from the latest data."""
+        return
