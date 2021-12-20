@@ -1,16 +1,12 @@
 {
   "domain": "purpleair",
-  "name": "purpleair",
+  "name": "PurpleAir",
   "config_flow": true,
   "documentation": "https://www.home-assistant.io/integrations/purpleair",
   "requirements": [
     "purpleair==1.2.5",
     "python-aqi==0.6.1"
   ],
-  "ssdp": [],
-  "zeroconf": [],
-  "homekit": {},
-  "dependencies": [],
   "codeowners": [
     "@jsherman256"
   ],
