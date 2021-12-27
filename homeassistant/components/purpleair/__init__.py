@@ -13,10 +13,7 @@ PLATFORMS: list[str] = ["sensor"]
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up purpleair from a config entry."""
-    # TODO Store an API object for your platforms to access
-    from pprint import pprint
-
-    pprint(hass.data.keys())
+    hass.data.setdefault(DOMAIN, {})
     hass.data[DOMAIN][entry.entry_id] = await hass.async_add_executor_job(Sensor, 4575)
 
     hass.config_entries.async_setup_platforms(entry, PLATFORMS)
